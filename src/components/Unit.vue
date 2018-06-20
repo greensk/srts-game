@@ -1,7 +1,9 @@
 <template>
   <div
     class="unit"
+    :class="{'is-selected': selected}"
     :style="extraStyle"
+    @click="onClick"
   >
     <img src="/static/unit.png">
   </div>
@@ -15,6 +17,7 @@ export default {
   },
 
   props: {
+    selected: Boolean,
     x: Number,
     y: Number
   },
@@ -34,6 +37,9 @@ export default {
   },
 
   methods: {
+    onClick () {
+      this.$emit('select')
+    }
   }
 }
 </script>
@@ -42,4 +48,12 @@ export default {
 .unit
   position: absolute
   cursor: pointer
+
+  &.is-selected
+    animation: blinker .4s cubic-bezier(.5, 0, 1, 1) infinite alternate
+
+  @keyframes blinker
+    to
+      opacity: 0
+      // visibility: hidden
 </style>
