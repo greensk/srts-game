@@ -13,7 +13,7 @@
       :x="unit.x"
       :y="unit.y"
       :energy="unit.energy"
-      @select="selectedUnit = unit.id"
+      @select="selectUnit(unit)"
     ></unit>
   </div>
 </template>
@@ -21,6 +21,7 @@
 <script>
 import Field from './Field.vue'
 import Unit from './Unit.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Map',
@@ -42,43 +43,20 @@ export default {
   },
 
   data () {
-    let fields = []
-    let units = [
-      {
-        id: 1,
-        x: 2,
-        y: 2,
-        enegry: 10
-      },
-      {
-        id: 2,
-        x: 5,
-        y: 2,
-        enegry: 10
-      },
-      {
-        id: 3,
-        x: 2,
-        y: 5,
-        enegry: 10
-      }
-    ]
-    for (let x = 0; x < this.width; x++) {
-      for (let y = 0; y < this.height; y++) {
-        fields.push({ x, y, id: `${x}:${y}` })
-      }
-    }
     return {
-      selectedUnit: null,
-      units,
-      fields
     }
   },
 
   computed: {
+    ...mapState({
+      units: state => state.units,
+      fields: state => state.fields,
+      selectedUnit: state => state.selectedUnit
+    })
   },
 
   methods: {
+    ...mapActions(['selectUnit'])
   }
 }
 </script>
