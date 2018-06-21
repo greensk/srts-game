@@ -14,15 +14,21 @@
       :key="unit.id"
       :x="unit.x"
       :y="unit.y"
-      :energy="unit.energy"
+      :current-energy="unit.currentEnergy"
+      :required-energy="unit.requiredEnergy"
       @select="selectUnit(unit)"
     ></unit>
+    <base-timer
+      :timeout="1000"
+      @timer="unitsEnergyUpdate"
+    ></base-timer>
   </div>
 </template>
 
 <script>
 import Field from './Field.vue'
 import Unit from './Unit.vue'
+import BaseTimer from './BaseTimer.vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -30,7 +36,8 @@ export default {
 
   components: {
     Field,
-    Unit
+    Unit,
+    BaseTimer
   },
 
   props: {
@@ -59,7 +66,11 @@ export default {
   },
 
   methods: {
-    ...mapActions(['selectUnit', 'goToField']),
+    ...mapActions([
+      'selectUnit',
+      'goToField',
+      'unitsEnergyUpdate'
+    ]),
     getFieldStatus (field) {
       if (this.selectedUnitId !== null) {
         if (this.reachableFields.indexOf(field) > -1) {

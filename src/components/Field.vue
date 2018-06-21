@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { fieldWidth, fieldHeight } from '@/shared/constants.js'
 export default {
   name: 'Field',
 
@@ -27,8 +28,8 @@ export default {
   computed: {
     extraStyle () {
       return {
-        top: ((this.y - 1) * 30).toString() + 'px',
-        left: ((this.x - 1) * 30).toString() + 'px'
+        top: ((this.y - 1) * fieldWidth).toString() + 'px',
+        left: ((this.x - 1) * fieldHeight).toString() + 'px'
       }
     }
   },

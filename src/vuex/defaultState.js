@@ -8,21 +8,24 @@ export default function () {
       speed: 4,
       x: 2,
       y: 2,
-      enegry: 10
+      requiredEnergy: 10,
+      currentEnergy: 10
     },
     {
       id: 2,
       speed: 4,
       x: 5,
       y: 2,
-      enegry: 10
+      requiredEnergy: 10,
+      currentEnergy: 10
     },
     {
       id: 3,
       speed: 4,
       x: 2,
       y: 5,
-      enegry: 10
+      requiredEnergy: 10,
+      currentEnergy: 10
     }
   ]
   for (let x = 0; x < mapWidth; x++) {
