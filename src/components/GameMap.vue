@@ -3,12 +3,14 @@
     <field
       v-for="field in fields"
       :key="field.id"
+      :status="getFieldStatus(field)"
       :x="field.x"
       :y="field.y"
+      @go="goToField(field)"
     ></field>
     <unit
       v-for="unit in units"
-      :selected="selectedUnit === unit.id"
+      :selected="selectedUnitId === unit.id"
       :key="unit.id"
       :x="unit.x"
       :y="unit.y"
@@ -21,7 +23,7 @@
 <script>
 import Field from './Field.vue'
 import Unit from './Unit.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
@@ -51,12 +53,23 @@ export default {
     ...mapState({
       units: state => state.units,
       fields: state => state.fields,
-      selectedUnit: state => state.selectedUnit
-    })
+      selectedUnitId: state => state.selectedUnitId
+    }),
+    ...mapGetters(['reachableFields'])
   },
 
   methods: {
-    ...mapActions(['selectUnit'])
+    ...mapActions(['selectUnit', 'goToField']),
+    getFieldStatus (field) {
+      if (this.selectedUnitId !== null) {
+        if (this.reachableFields.indexOf(field) > -1) {
+          return 'reachable'
+        } else {
+          return 'unreachable'
+        }
+      }
+      return 'none'
+    }
   }
 }
 </script>

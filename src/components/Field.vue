@@ -1,7 +1,9 @@
 <template>
   <div
     class="field"
+    :class="[status]"
     :style="extraStyle"
+    @click="onClick"
   ></div>
 </template>
 
@@ -14,7 +16,8 @@ export default {
 
   props: {
     x: Number,
-    y: Number
+    y: Number,
+    status: String
   },
 
   data () {
@@ -31,6 +34,11 @@ export default {
   },
 
   methods: {
+    onClick () {
+      if (this.status === 'reachable') {
+        this.$emit('go')
+      }
+    }
   }
 }
 </script>
@@ -43,4 +51,9 @@ export default {
   width: 40px
   height: 40px
   background-color: green
+
+  &.unreachable
+    background-color: gray
+  &.reachable
+    cursor: pointer
 </style>

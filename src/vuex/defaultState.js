@@ -5,18 +5,21 @@ export default function () {
   let units = [
     {
       id: 1,
+      speed: 4,
       x: 2,
       y: 2,
       enegry: 10
     },
     {
       id: 2,
+      speed: 4,
       x: 5,
       y: 2,
       enegry: 10
     },
     {
       id: 3,
+      speed: 4,
       x: 2,
       y: 5,
       enegry: 10
@@ -32,6 +35,6 @@ export default function () {
     mapHeight,
     fields,
     units,
-    selectedUnit: null
+    selectedUnitId: null
   }
 }
