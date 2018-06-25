@@ -11,6 +11,7 @@
     <unit
       v-for="unit in units"
       :selected="selectedUnitId === unit.id"
+      :status="getUnitStatus(unit)"
       :key="unit.id"
       :x="unit.x"
       :y="unit.y"
@@ -80,6 +81,15 @@ export default {
         }
       }
       return 'none'
+    },
+    getUnitStatus (unit) {
+      if (this.selectedUnitId !== null && unit.id === this.selectedUnitId) {
+        return 'selected'
+      } else if (unit.currentEnergy === unit.requiredEnergy) {
+        return 'selectable'
+      } else {
+        return 'waiting'
+      }
     }
   }
 }

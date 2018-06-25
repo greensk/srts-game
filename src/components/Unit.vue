@@ -1,7 +1,7 @@
 <template>
   <div
     class="unit"
-    :class="{'is-selected': selected}"
+    :class="[status]"
     :style="extraStyle"
     @click="onClick"
   >
@@ -9,6 +9,7 @@
       class="energy-idicator"
     >
       <div
+        v-if="currentEnergy > 0"
         class="energy-indicator-value"
         :style="energyIndicatorValueStyle"
       ></div>
@@ -26,7 +27,7 @@ export default {
   },
 
   props: {
-    selected: Boolean,
+    status: String,
     currentEnergy: Number,
     requiredEnergy: Number,
     x: Number,
@@ -47,14 +48,16 @@ export default {
     },
     energyIndicatorValueStyle () {
       return {
-        'width': Math.floor(fieldWidth * this.currentEnergy / this.requiredEnergy) + 'px'
+        'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
       }
     }
   },
 
   methods: {
     onClick () {
-      this.$emit('select')
+      if (this.status === 'selectable') {
+        this.$emit('select')
+      }
     }
   }
 }
@@ -63,7 +66,6 @@ export default {
 <style lang="sass" scoped>
 .unit
   position: absolute
-  cursor: pointer
 
   img
     margin: 5px
@@ -82,10 +84,16 @@ export default {
     left: 0px
     height: 3px
     background-color: blue
-    transition: width 1s
+    transition: width 1s linear
 
-  &.is-selected
+  &.selected
     animation: blinker .4s cubic-bezier(.5, 0, 1, 1) infinite alternate
+
+  &.waiting
+    opacity: 0.7
+
+  &.selectable
+    cursor: pointer
 
   @keyframes blinker
     to
