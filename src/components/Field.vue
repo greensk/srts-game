@@ -28,8 +28,8 @@ export default {
   computed: {
     extraStyle () {
       return {
-        top: ((this.y - 1) * fieldWidth).toString() + 'px',
-        left: ((this.x - 1) * fieldHeight).toString() + 'px'
+        top: (this.y * fieldWidth).toString() + 'px',
+        left: (this.x * fieldHeight).toString() + 'px'
       }
     }
   },
