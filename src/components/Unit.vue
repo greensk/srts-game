@@ -14,7 +14,7 @@
         :style="energyIndicatorValueStyle"
       ></div>
     </div>
-    <img src="/static/unit.png">
+    <img :src="unitImageUrl">
   </div>
 </template>
 
@@ -31,7 +31,8 @@ export default {
     currentEnergy: Number,
     requiredEnergy: Number,
     x: Number,
-    y: Number
+    y: Number,
+    player: Number
   },
 
   data () {
@@ -50,6 +51,9 @@ export default {
       return {
         'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
       }
+    },
+    unitImageUrl () {
+      return `/static/unit${this.player}.png`
     }
   },
 

@@ -5,6 +5,7 @@ export default function () {
   let units = [
     {
       id: 1,
+      player: 0,
       speed: 4,
       x: 2,
       y: 2,
@@ -13,6 +14,7 @@ export default function () {
     },
     {
       id: 2,
+      player: 0,
       speed: 4,
       x: 5,
       y: 2,
@@ -21,9 +23,37 @@ export default function () {
     },
     {
       id: 3,
+      player: 0,
       speed: 4,
       x: 2,
       y: 5,
+      requiredEnergy: 10,
+      currentEnergy: 10
+    },
+    {
+      id: 4,
+      player: 1,
+      speed: 4,
+      x: 17,
+      y: 17,
+      requiredEnergy: 10,
+      currentEnergy: 10
+    },
+    {
+      id: 5,
+      player: 1,
+      speed: 4,
+      x: 14,
+      y: 17,
+      requiredEnergy: 10,
+      currentEnergy: 10
+    },
+    {
+      id: 6,
+      player: 1,
+      speed: 4,
+      x: 17,
+      y: 14,
       requiredEnergy: 10,
       currentEnergy: 10
     }
@@ -38,6 +68,7 @@ export default function () {
     mapHeight,
     fields,
     units,
+    currentPlayer: 0,
     selectedUnitId: null
   }
 }

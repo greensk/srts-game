@@ -15,6 +15,7 @@
       :key="unit.id"
       :x="unit.x"
       :y="unit.y"
+      :player="unit.player"
       :current-energy="unit.currentEnergy"
       :required-energy="unit.requiredEnergy"
       @select="selectUnit(unit)"
@@ -61,7 +62,8 @@ export default {
     ...mapState({
       units: state => state.units,
       fields: state => state.fields,
-      selectedUnitId: state => state.selectedUnitId
+      selectedUnitId: state => state.selectedUnitId,
+      currentPlayer: state => state.currentPlayer
     }),
     ...mapGetters(['reachableFields'])
   },
@@ -83,7 +85,9 @@ export default {
       return 'none'
     },
     getUnitStatus (unit) {
-      if (this.selectedUnitId !== null && unit.id === this.selectedUnitId) {
+      if (unit.player !== this.currentPlayer) {
+        return 'enemy'
+      } else if (this.selectedUnitId !== null && unit.id === this.selectedUnitId) {
         return 'selected'
       } else if (unit.currentEnergy === unit.requiredEnergy) {
         return 'selectable'
