@@ -12,6 +12,11 @@ export default {
   name: 'App',
   components: {
     GameMap
+  },
+  data () {
+    return {
+      socket: null
+    }
   }
 }
 </script>
