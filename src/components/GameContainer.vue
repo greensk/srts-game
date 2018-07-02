@@ -1,5 +1,5 @@
 <template>
-  <div class="map">
+  <div class="game-container">
     <field
       v-for="field in fields"
       :key="field.id"
@@ -34,7 +34,7 @@ import BaseTimer from './BaseTimer.vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'Map',
+  name: 'GameContainer',
 
   components: {
     Field,
@@ -100,5 +100,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.map
+.game-container
 </style>

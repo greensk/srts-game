@@ -64,6 +64,12 @@ export default function () {
     }
   }
   return {
+    status: 'wait',
+    playerName: '',
+    gameId: null,
+    ownGame: false,
+    games: null,
+
     mapWidth,
     mapHeight,
     fields,

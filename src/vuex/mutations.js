@@ -1,7 +1,10 @@
 import {
   SELECT_UNIT,
   UPDATE_UNIT,
-  UNITS_ENERGY_UPDATE
+  UNITS_ENERGY_UPDATE,
+  SET_PLAYER_NAME,
+  SET_OWN_GAME,
+  SET_GAMES
 } from './mutationTypes.js'
 
 export default {
@@ -25,5 +28,14 @@ export default {
         return unit
       }
     })
+  },
+  [SET_PLAYER_NAME] (state, value) {
+    state.playerName = value
+  },
+  [SET_OWN_GAME] (state, value) {
+    state.ownGame = value
+  },
+  [SET_GAMES] (state, values) {
+    state.games = values
   }
 }
