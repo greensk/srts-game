@@ -69,6 +69,8 @@ export default function () {
     gameId: null,
     ownGame: false,
     games: null,
+    gameToJoin: null,
+    gameRequests: [],
 
     mapWidth,
     mapHeight,

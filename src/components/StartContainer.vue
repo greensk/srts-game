@@ -8,7 +8,11 @@
       v-else
       :own-game="ownGame"
       :games="games"
+      :game-to-join="gameToJoin"
+      :game-requests="gameRequests"
+      @start-game="startGame({ clientId: arguments[0] })"
       @create="createGame"
+      @join="joinGame({ game: arguments[0] })"
     ></start-game>
   </start-layout>
 </template>
@@ -35,7 +39,9 @@ export default {
     ...mapState({
       playerName: state => state.playerName,
       ownGame: state => state.ownGame,
-      games: state => state.games
+      games: state => state.games,
+      gameToJoin: state => state.gameToJoin,
+      gameRequests: state => state.gameRequests
     }),
     ...mapGetters([
     ])
@@ -44,7 +50,9 @@ export default {
   methods: {
     ...mapActions([
       'setPlayerName',
-      'createGame'
+      'createGame',
+      'joinGame',
+      'startGame'
     ])
   }
 }

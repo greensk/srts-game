@@ -4,7 +4,10 @@ import {
   UNITS_ENERGY_UPDATE,
   SET_PLAYER_NAME,
   SET_OWN_GAME,
-  SET_GAMES
+  SET_GAMES,
+  SET_GAME_TO_JOIN,
+  SET_GAME_REQUESTS,
+  SET_STATUS
 } from './mutationTypes.js'
 export default {
   selectUnit ({ commit }, unit) {
@@ -32,5 +35,17 @@ export default {
     // called by server on games list update when clien status is "wait"
     console.log(games)
     commit(SET_GAMES, games)
+  },
+  joinGame ({ commit }, { game }) {
+    // magic action, server should send accept message to a partner
+    commit(SET_GAME_TO_JOIN, game)
+  },
+  setGameRequests ({ commit }, { list }) {
+    // called by server when some user tries to join a game you own
+    commit(SET_GAME_REQUESTS, list)
+  },
+  startGame ({ commit }, { clientId }) {
+    // magic action, server should start game with specified client
+    commit(SET_STATUS, 'play')
   }
 }

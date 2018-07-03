@@ -4,7 +4,10 @@ import {
   UNITS_ENERGY_UPDATE,
   SET_PLAYER_NAME,
   SET_OWN_GAME,
-  SET_GAMES
+  SET_GAMES,
+  SET_GAME_TO_JOIN,
+  SET_GAME_REQUESTS,
+  SET_STATUS
 } from './mutationTypes.js'
 
 export default {
@@ -37,5 +40,14 @@ export default {
   },
   [SET_GAMES] (state, values) {
     state.games = values
+  },
+  [SET_GAME_TO_JOIN] (state, value) {
+    state.gameToJoin = value
+  },
+  [SET_GAME_REQUESTS] (state, values) {
+    state.gameRequests = values
+  },
+  [SET_STATUS] (state, value) {
+    state.status = value
   }
 }

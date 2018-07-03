@@ -3,10 +3,12 @@
     v-if="games"
     class="start-game-join"
   >
+    <h4>Подключиться к чужой игре:</h4>
     <div
       v-for="game in games"
       :key="game.id"
       class="game-item"
+      @click="$emit('join', game.id)"
     >
       {{ game.name }} ({{game.id}})
     </div>

@@ -1,5 +1,12 @@
 <template>
   <div class="start-game-created">
+    <div
+      v-for="request in gameRequests"
+      :key="request.id"
+      @click="$emit('start-game', request.id)"
+    >
+      {{ request.name }}
+    </div>
   </div>
 </template>
 
@@ -11,6 +18,7 @@ export default {
   },
 
   props: {
+    gameRequests: Array
   },
 
   data () {
