@@ -1,3 +1,7 @@
+import {
+  SET_STATUS
+} from './mutationTypes.js'
+
 const socket = new WebSocket('ws://localhost:1337')
 
 export default store => {
@@ -13,5 +17,11 @@ export default store => {
     if (message.type) {
       store.dispatch(message.type, payload)
     }
+  }
+  socket.onopen = (event) => {
+    store.commit(SET_STATUS, 'wait')
+  }
+  socket.onerror = (event) => {
+    store.commit(SET_STATUS, 'connectionError')
   }
 }

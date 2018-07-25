@@ -64,7 +64,7 @@ export default function () {
     }
   }
   return {
-    status: 'wait',
+    status: 'connection',
     playerName: '',
     gameId: null,
     ownGame: false,

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <div>
+      <div v-if="status === 'connection'">Соединение с сервером</div>
+      <div v-if="status === 'connectionError'">Ошибка соединения с сервером</div>
       <start-container v-if="status === 'wait'"></start-container>
       <game-container v-if="status === 'play'"></game-container>
     </div>
