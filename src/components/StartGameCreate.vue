@@ -1,7 +1,7 @@
 <template>
   <div class="start-game-create">
     <q-btn
-      label="Создать игру"
+      label="Создайте свою игру"
       @click="$emit('create')"
     ></q-btn>
   </div>

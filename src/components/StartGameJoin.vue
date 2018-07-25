@@ -3,7 +3,7 @@
     v-if="games"
     class="start-game-join"
   >
-    <h4>Подключиться к чужой игре:</h4>
+    <div v-if="games.length > 0">Или выберите чужую игру для подключения</div>
     <div
       v-for="game in games"
       :key="game.id"
@@ -41,4 +41,7 @@ export default {
 
 <style lang="sass" scoped>
 .start-game-join
+  margin-top: 30px
+.game-item
+  cursor: pointer
 </style>
