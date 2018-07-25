@@ -7,10 +7,11 @@ import {
   SET_GAMES,
   SET_GAME_TO_JOIN,
   SET_GAME_REQUESTS,
-  SET_STATUS
+  SET_STATUS,
+  SET_CURRENY_PLAYER
 } from './mutationTypes.js'
 export default {
-  selectUnit ({ commit }, unit) {
+  selectUnit ({ commit }, { unit, priv = true }) {
     commit(SELECT_UNIT, unit.id)
   },
   goToField ({ commit, state }, field) {
@@ -44,8 +45,11 @@ export default {
     // called by server when some user tries to join a game you own
     commit(SET_GAME_REQUESTS, list)
   },
-  startGame ({ commit }, { clientId }) {
+  startGame ({ commit }, { clientId, player }) {
     // magic action, server should start game with specified client
     commit(SET_STATUS, 'play')
+    if (player) {
+      commit(SET_CURRENY_PLAYER, +player)
+    }
   }
 }

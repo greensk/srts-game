@@ -18,7 +18,7 @@
       :player="unit.player"
       :current-energy="unit.currentEnergy"
       :required-energy="unit.requiredEnergy"
-      @select="selectUnit(unit)"
+      @select="selectUnit({ unit: unit, priv: true })"
     ></unit>
     <base-timer
       :timeout="1000"

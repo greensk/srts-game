@@ -6,7 +6,7 @@ const socket = new WebSocket('ws://localhost:1337')
 
 export default store => {
   store.subscribeAction((action, store) => {
-    if (!action.payload || (!action.payload.external && !action.payload.private)) {
+    if (!action.payload || (!action.payload.external && !action.payload.priv)) {
       socket.send(JSON.stringify(action))
     }
   })
