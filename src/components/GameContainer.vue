@@ -6,7 +6,7 @@
       :status="getFieldStatus(field)"
       :x="field.x"
       :y="field.y"
-      @go="goToField(field)"
+      @go="goToField({unitId: selectedUnitId, field})"
     ></field>
     <unit
       v-for="unit in units"

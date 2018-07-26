@@ -14,10 +14,10 @@ export default {
   selectUnit ({ commit }, { unit, priv = true }) {
     commit(SELECT_UNIT, unit.id)
   },
-  goToField ({ commit, state }, field) {
+  goToField ({ commit, state }, { unitId, field }) {
     commit(
       UPDATE_UNIT,
-      { unitId: state.selectedUnitId, unitData: { x: field.x, y: field.y, currentEnergy: 0 } }
+      { unitId, unitData: { x: field.x, y: field.y, currentEnergy: 0 } }
     )
     commit(SELECT_UNIT, null)
   },
