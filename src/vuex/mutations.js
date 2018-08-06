@@ -8,7 +8,8 @@ import {
   SET_GAME_TO_JOIN,
   SET_GAME_REQUESTS,
   SET_STATUS,
-  SET_CURRENY_PLAYER
+  SET_CURRENY_PLAYER,
+  SET_GAME_ID
 } from './mutationTypes.js'
 
 export default {
@@ -53,5 +54,8 @@ export default {
   },
   [SET_CURRENY_PLAYER] (state, value) {
     state.currentPlayer = value
+  },
+  [SET_GAME_ID] (state, gameId) {
+    state.gameId = gameId
   }
 }
