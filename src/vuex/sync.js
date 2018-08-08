@@ -2,7 +2,7 @@ import {
   SET_STATUS
 } from './mutationTypes.js'
 
-const url = 'ws://localhost:1337'
+const url = 'ws://srts.greenpo.ru:1337'
 
 export default store => {
   init(store, new WebSocket(url))
