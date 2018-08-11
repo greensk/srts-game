@@ -108,7 +108,7 @@ export default {
           (field) => {
             const near = getNearFields(field.x, field.y)
             const nearType = _.sample(near.filter(f => f.type > -1).map(f => f.type))
-            if (nearType && Math.random() < 0.01) {
+            if (nearType > -1 && Math.random() < 0.01) {
               return {...field, type: nearType}
             } else {
               return field
