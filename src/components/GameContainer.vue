@@ -26,7 +26,7 @@
       @timer="unitsTimeoutUpdate"
     ></base-timer>
     <base-timer
-      :timeout="3000"
+      :timeout="7000"
       @timer="regeneration"
     ></base-timer>
   </div>

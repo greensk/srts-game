@@ -93,7 +93,7 @@ export default {
       let result = []
       for (var dx = -1; dx <= 1; dx++) {
         for (var dy = -1; dy <= 1; dy++) {
-          if (dx !== 0 && dy !== 0) {
+          if ((dx !== 0 || dy !== 0) && (dx === 0 || dy === 0)) {
             const field = state.fields.find(f => f.x === x + dx && f.y === y + dy)
             if (field) {
               result.push(field)
@@ -108,9 +108,12 @@ export default {
       {
         fields: state.fields.map(
           (field) => {
+            if (field.type === 2) {
+              return field
+            }
             const near = getNearFields(field.x, field.y)
             const nearType = _.sample(near.filter(f => f.type > -1).map(f => f.type))
-            if (nearType > -1 && Math.random() < 0.01) {
+            if (nearType > -1 && Math.random() < 0.03) {
               return {...field, type: nearType}
             } else {
               return field
