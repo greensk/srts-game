@@ -83,7 +83,7 @@ export default {
     // magic action to provide to the restarted server current game id and player
     commit(SET_STATUS, 'play')
   },
-  regeneration ({ commit, state, dispatch }) {
+  regeneration ({ commit, state, dispatch }, params = {}) {
     if (state.currentPlayer !== 0) {
       return
     }
