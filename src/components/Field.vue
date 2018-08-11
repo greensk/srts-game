@@ -62,12 +62,12 @@ export default {
   &.reachable
     cursor: pointer
 
-  &.type-1
+  &.type-0
     background-color: red
 
-  &.type-2
+  &.type-1
     background-color: blue
 
-  &.type-3
+  &.type-2
     background-color: yellow
 </style>

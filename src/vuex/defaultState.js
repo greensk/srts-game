@@ -28,13 +28,13 @@ export default function () {
     for (let y = 0; y < mapHeight; y++) {
       const rand = Math.random()
       if (rand < 0.02) {
-        var type = 1
+        var type = 0
       } else if (rand < 0.04) {
-        type = 2
+        type = 1
       } else if (rand < 0.1) {
-        type = 3
+        type = 2
       } else {
-        type = 0
+        type = -1
       }
       fields.push({ x, y, id: `${x}:${y}`, type })
     }
@@ -51,8 +51,8 @@ export default function () {
     energyTimeoutDelta: 1,
 
     healthTimeoutDelta: -0.1,
-    healthValidFoodDelta: -1,
-    healthInvalidDelta: 1,
+    healthValidFoodDelta: 4,
+    healthInvalidFoodDelta: -4,
 
     mapWidth,
     mapHeight,
