@@ -1,18 +1,20 @@
 export default function () {
-  const mapWidth = 20
-  const mapHeight = 20
+  const mapWidth = 20 // ширина карты (в клетках)
+  const mapHeight = 20 // высота карты (в клетках)
   let fields = []
   let units = [
+    // обезьяна "Яна"
     {
       id: 1,
       player: 0,
-      speed: 3,
-      x: 2,
-      y: 2,
-      requiredEnergy: 3,
-      currentEnergy: 3,
-      currentHealth: 10
+      speed: 3, // расстояние за один прыжок
+      x: 2, // начальная позиция, координата X
+      y: 2, // начальная позиция, координата Y
+      requiredEnergy: 3, // энергия, нужная для прыжка
+      currentEnergy: 3, // начальная энергия
+      currentHealth: 10 // начальное здоровье
     },
+    // кролик "Толик"
     {
       id: 2,
       player: 1,
@@ -48,11 +50,11 @@ export default function () {
     gameToJoin: null,
     gameRequests: [],
 
-    energyTimeoutDelta: 1,
+    energyTimeoutDelta: 1, // на сколько увеличивается энергия за 1c
 
-    healthTimeoutDelta: -0.1,
-    healthValidFoodDelta: 4,
-    healthInvalidFoodDelta: -4,
+    healthTimeoutDelta: -0.1, // на сколько увеличивается здоровье за 1с
+    healthValidFoodDelta: 4, // на сколько увеличивается здоровье при поедании своей еды
+    healthInvalidFoodDelta: -4, // на сколько увеличивается здоровье при поедании не своей еды
 
     mapWidth,
     mapHeight,
