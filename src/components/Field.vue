@@ -57,8 +57,14 @@ export default {
   height: 40px
   background-color: green
 
-  &.unreachable
-    background-color: gray
+  &.unreachable:before
+    content: ' '
+    position: absolute
+    top: 0px
+    left: 0px
+    width: 40px
+    height: 40px
+    background-color: rgba(10, 10, 10, 0.2)
   &.reachable
     cursor: pointer
 
