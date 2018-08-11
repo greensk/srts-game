@@ -59,6 +59,6 @@ export default function () {
     fields,
     units,
     currentPlayer: 0,
-    selectedUnitId: null
+    selectedUnitId: 1
   }
 }

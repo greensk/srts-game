@@ -63,6 +63,7 @@ export default {
   },
   [SET_CURRENY_PLAYER] (state, value) {
     state.currentPlayer = value
+    state.selectedUnitId = state.units.find(u => u.player === value).id
   },
   [SET_GAME_ID] (state, gameId) {
     state.gameId = gameId

@@ -19,6 +19,9 @@ export default {
   },
   goToField ({ commit, state }, { unitId, field }) {
     const unit = state.units.find(u => u.id === unitId)
+    if (unit.currentEnergy < unit.requiredEnergy) {
+      return
+    }
     let currentHealth = unit.currentHealth
     if (field.type === state.currentPlayer) {
       currentHealth += state.healthValidFoodDelta
@@ -40,7 +43,6 @@ export default {
       }
     })
     commit(SET_FIELDS, newFields)
-    commit(SELECT_UNIT, null)
   },
   unitsTimeoutUpdate ({ commit }) {
     commit(UNITS_TIMEOUT_UPDATE)
