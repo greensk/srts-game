@@ -68,7 +68,7 @@ export default {
     // called by server when some user tries to join a game you own
     commit(SET_GAME_REQUESTS, list)
   },
-  startGame ({ commit }, { clientId, player, gameId }) {
+  startGame ({ commit, dispatch }, { clientId, player, gameId }) {
     // magic action, server should start game with specified client
     if (gameId) {
       commit(SET_GAME_ID, gameId)
@@ -77,6 +77,7 @@ export default {
     if (player) {
       commit(SET_CURRENY_PLAYER, +player)
     }
+    dispatch('generateMap', {})
   },
   setGameId ({ commit }, { gameId }) {
     commit(SET_GAME_ID, gameId)
@@ -124,6 +125,10 @@ export default {
     )
   },
   setFields ({ commit, state }, { fields }) {
+    if (state.fields.length === 0) {
+      commit(SET_FIELDS, fields)
+      return
+    }
     commit(SET_FIELDS, state.fields.map((cf) => {
       const replaceField = fields.find(f => f.x === cf.x && f.y === cf.y)
       if (replaceField) {
@@ -132,5 +137,27 @@ export default {
         return cf
       }
     }))
+  },
+  generateMap ({ commit, state, dispatch }, { external }) {
+    if (state.currentPlayer !== 0) {
+      return
+    }
+    let fields = []
+    for (let x = 0; x < state.mapWidth; x++) {
+      for (let y = 0; y < state.mapHeight; y++) {
+        const rand = Math.random()
+        if (rand < 0.02) {
+          var type = 0
+        } else if (rand < 0.04) {
+          type = 1
+        } else if (rand < 0.1) {
+          type = 2
+        } else {
+          type = -1
+        }
+        fields.push({ x, y, id: `${x}:${y}`, type })
+      }
+    }
+    dispatch('setFields', { fields })
   }
 }
