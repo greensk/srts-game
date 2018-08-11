@@ -23,5 +23,13 @@ export default {
         Math.pow(field.x - getters.currentUnit.x, 2) + Math.pow(field.y - getters.currentUnit.y, 2)
       ) <= speed
     })
+  },
+
+  myUnit (state) {
+    return state.units.find(u => u.player === state.currentPlayer)
+  },
+
+  enemyUnit (state) {
+    return state.units.find(u => u.player !== state.currentPlayer)
   }
 }

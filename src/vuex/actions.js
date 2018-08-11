@@ -1,7 +1,7 @@
 import {
   SELECT_UNIT,
   UPDATE_UNIT,
-  UNITS_ENERGY_UPDATE,
+  UNITS_TIMEOUT_UPDATE,
   SET_PLAYER_NAME,
   SET_OWN_GAME,
   SET_GAMES,
@@ -22,8 +22,8 @@ export default {
     )
     commit(SELECT_UNIT, null)
   },
-  unitsEnergyUpdate ({ commit }) {
-    commit(UNITS_ENERGY_UPDATE)
+  unitsTimeoutUpdate ({ commit }) {
+    commit(UNITS_TIMEOUT_UPDATE)
   },
   setPlayerName ({ commit }, { name }) {
     // magic action, server should update player name at the list

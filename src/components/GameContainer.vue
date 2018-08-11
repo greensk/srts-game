@@ -22,7 +22,7 @@
     ></unit>
     <base-timer
       :timeout="1000"
-      @timer="unitsEnergyUpdate"
+      @timer="unitsTimeoutUpdate"
     ></base-timer>
   </div>
 </template>
@@ -72,7 +72,7 @@ export default {
     ...mapActions([
       'selectUnit',
       'goToField',
-      'unitsEnergyUpdate'
+      'unitsTimeoutUpdate'
     ]),
     getFieldStatus (field) {
       if (this.selectedUnitId !== null) {

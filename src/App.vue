@@ -3,6 +3,7 @@
     <div>
       <div v-if="status === 'connection'">Соединение с сервером</div>
       <div v-if="status === 'connectionError'">Ошибка соединения с сервером</div>
+      <status-panel-container v-if="status === 'play'"></status-panel-container>
       <start-container v-if="status === 'wait'"></start-container>
       <game-container v-if="status === 'play'"></game-container>
     </div>
@@ -12,12 +13,15 @@
 <script>
 import StartContainer from '@/components/StartContainer.vue'
 import GameContainer from '@/components/GameContainer.vue'
+import StatusPanelContainer from '@/components/StatusPanelContainer.vue'
+
 import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: {
     StartContainer,
-    GameContainer
+    GameContainer,
+    StatusPanelContainer
   },
   data () {
     return {

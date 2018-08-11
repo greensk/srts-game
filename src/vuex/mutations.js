@@ -1,7 +1,7 @@
 import {
   SELECT_UNIT,
   UPDATE_UNIT,
-  UNITS_ENERGY_UPDATE,
+  UNITS_TIMEOUT_UPDATE,
   SET_PLAYER_NAME,
   SET_OWN_GAME,
   SET_GAMES,
@@ -25,12 +25,18 @@ export default {
       }
     })
   },
-  [UNITS_ENERGY_UPDATE] (state) {
+  [UNITS_TIMEOUT_UPDATE] (state) {
     state.units = state.units.map((unit) => {
-      if (unit.currentEnergy < unit.requiredEnergy) {
-        return {...unit, currentEnergy: unit.currentEnergy + 1}
-      } else {
-        return unit
+      let currentEnergy = unit.currentEnergy
+      if (currentEnergy < unit.requiredEnergy) {
+        currentEnergy += state.energyTimeoutDelta
+      }
+      let currentHealth = unit.currentHealth + state.healthTimeoutDelta
+      // TODO check death
+      return {
+        ...unit,
+        currentEnergy,
+        currentHealth
       }
     })
   },

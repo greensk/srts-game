@@ -52,6 +52,11 @@ export default {
         'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
       }
     },
+    healthIndicatorValueStyle () {
+      return {
+        'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
+      }
+    },
     unitImageUrl () {
       return `/static/unit${this.player}.png`
     }
