@@ -23,7 +23,7 @@ export default {
       return
     }
     let currentHealth = unit.currentHealth
-    if (field.type === state.currentPlayer) {
+    if (field.type === unit.player) {
       currentHealth += state.healthValidFoodDelta
     } else if (field.type > -1) {
       currentHealth += state.healthInvalidFoodDelta
@@ -33,7 +33,7 @@ export default {
       { unitId, unitData: { x: field.x, y: field.y, currentEnergy: 0, currentHealth } }
     )
     const newFields = state.fields.map((f) => {
-      if (f === field) {
+      if (f.x === field.x && f.y === field.y) {
         return {
           ...f,
           type: -1
