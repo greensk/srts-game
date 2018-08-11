@@ -62,12 +62,41 @@ export default {
   &.reachable
     cursor: pointer
 
-  &.type-0
-    background-color: red
+  background-image: url(/static/field-1.png)
 
-  &.type-1
-    background-color: blue
+  &.type-0:after
+    position: absolute
+    content: ''
+    left: 0px
+    top: 0px
+    height: 40px
+    width: 40px
+    background-repeat: no-repeat
+    background-image: url(/static/field0.png)
+    margin-top: 5px
+    margin-left: 5px
 
-  &.type-2
-    background-color: yellow
+  &.type-1:after
+    position: absolute
+    content: ''
+    left: 0px
+    top: 0px
+    height: 40px
+    width: 40px
+    background-repeat: no-repeat
+    background-image: url(/static/field1.png)
+    margin-top: 5px
+    margin-left: 5px
+
+  &.type-2:after
+    position: absolute
+    content: ''
+    left: 0px
+    top: 0px
+    height: 40px
+    width: 40px
+    background-repeat: no-repeat
+    background-image: url(/static/field2.png)
+    margin-top: 5px
+    margin-left: 5px
 </style>
