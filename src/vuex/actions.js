@@ -29,6 +29,17 @@ export default {
       UPDATE_UNIT,
       { unitId, unitData: { x: field.x, y: field.y, currentEnergy: 0, currentHealth } }
     )
+    const newFields = state.fields.map((f) => {
+      if (f === field) {
+        return {
+          ...f,
+          type: -1
+        }
+      } else {
+        return f
+      }
+    })
+    commit(SET_FIELDS, newFields)
     commit(SELECT_UNIT, null)
   },
   unitsTimeoutUpdate ({ commit }) {
