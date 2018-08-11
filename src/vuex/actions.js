@@ -9,7 +9,8 @@ import {
   SET_GAME_REQUESTS,
   SET_STATUS,
   SET_CURRENY_PLAYER,
-  SET_GAME_ID
+  SET_GAME_ID,
+  REGENERATION
 } from './mutationTypes.js'
 export default {
   selectUnit ({ commit }, { unit, priv = true }) {
@@ -62,5 +63,8 @@ export default {
   resumeGame ({ commit, state }, { gameId, player }) {
     // magic action to provide to the restarted server current game id and player
     commit(SET_STATUS, 'play')
+  },
+  regeneration ({ commit, state }) {
+    commit(REGENERATION)
   }
 }

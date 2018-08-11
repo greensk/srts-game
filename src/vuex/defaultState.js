@@ -26,7 +26,17 @@ export default function () {
   ]
   for (let x = 0; x < mapWidth; x++) {
     for (let y = 0; y < mapHeight; y++) {
-      fields.push({ x, y, id: `${x}:${y}` })
+      const rand = Math.random()
+      if (rand < 0.02) {
+        var type = 1
+      } else if (rand < 0.04) {
+        type = 2
+      } else if (rand < 0.1) {
+        type = 3
+      } else {
+        type = 0
+      }
+      fields.push({ x, y, id: `${x}:${y}`, type })
     }
   }
   return {

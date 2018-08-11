@@ -6,6 +6,7 @@
       :status="getFieldStatus(field)"
       :x="field.x"
       :y="field.y"
+      :type="field.type"
       @go="goToField({unitId: selectedUnitId, field})"
     ></field>
     <unit
@@ -23,6 +24,10 @@
     <base-timer
       :timeout="1000"
       @timer="unitsTimeoutUpdate"
+    ></base-timer>
+    <base-timer
+      :timeout="3000"
+      @timer="regeneration"
     ></base-timer>
   </div>
 </template>
@@ -72,7 +77,8 @@ export default {
     ...mapActions([
       'selectUnit',
       'goToField',
-      'unitsTimeoutUpdate'
+      'unitsTimeoutUpdate',
+      'regeneration'
     ]),
     getFieldStatus (field) {
       if (this.selectedUnitId !== null) {

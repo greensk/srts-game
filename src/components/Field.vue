@@ -1,7 +1,7 @@
 <template>
   <div
     class="field"
-    :class="[status]"
+    :class="[status, typeClass]"
     :style="extraStyle"
     @click="onClick"
   ></div>
@@ -18,7 +18,8 @@ export default {
   props: {
     x: Number,
     y: Number,
-    status: String
+    status: String,
+    type: Number
   },
 
   data () {
@@ -31,6 +32,9 @@ export default {
         top: (this.y * fieldWidth).toString() + 'px',
         left: (this.x * fieldHeight).toString() + 'px'
       }
+    },
+    typeClass () {
+      return `type-${this.type}`
     }
   },
 
@@ -57,4 +61,13 @@ export default {
     background-color: gray
   &.reachable
     cursor: pointer
+
+  &.type-1
+    background-color: red
+
+  &.type-2
+    background-color: blue
+
+  &.type-3
+    background-color: yellow
 </style>
