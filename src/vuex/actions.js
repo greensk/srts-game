@@ -109,21 +109,28 @@ export default {
         fields: state.fields.map(
           (field) => {
             if (field.type === 2) {
-              return field
+              return null
             }
             const near = getNearFields(field.x, field.y)
             const nearType = _.sample(near.filter(f => f.type > -1).map(f => f.type))
             if (nearType > -1 && Math.random() < 0.03) {
               return {...field, type: nearType}
             } else {
-              return field
+              return null
             }
           }
-        )
+        ).filter(f => f !== null)
       }
     )
   },
-  setFields ({ commit }, { fields }) {
-    commit(SET_FIELDS, fields)
+  setFields ({ commit, state }, { fields }) {
+    commit(SET_FIELDS, state.fields.map((cf) => {
+      const replaceField = fields.find(f => f.x === cf.x && f.y === cf.y)
+      if (replaceField) {
+        return replaceField
+      } else {
+        return cf
+      }
+    }))
   }
 }
