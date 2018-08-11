@@ -1,7 +1,7 @@
 <template>
   <div
     class="unit"
-    :class="[status]"
+    :class="[status, {'is-movable': movable}]"
     :style="extraStyle"
     @click="onClick"
   >
@@ -41,6 +41,9 @@ export default {
   },
 
   computed: {
+    movable () {
+      return this.currentEnergy >= this.requiredEnergy
+    },
     extraStyle () {
       return {
         top: (this.y * fieldWidth).toString() + 'px',
@@ -95,7 +98,7 @@ export default {
     background-color: blue
     transition: width 1s linear
 
-  &.selected
+  &.selected.is-movable
     animation: blinker .4s cubic-bezier(.5, 0, 1, 1) infinite alternate
 
   &.waiting
