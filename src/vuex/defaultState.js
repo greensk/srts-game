@@ -6,21 +6,21 @@ export default function () {
     {
       id: 1,
       player: 0,
-      speed: 4,
+      speed: 3,
       x: 2,
       y: 2,
-      requiredEnergy: 10,
-      currentEnergy: 10,
+      requiredEnergy: 3,
+      currentEnergy: 3,
       currentHealth: 10
     },
     {
       id: 2,
       player: 1,
-      speed: 4,
+      speed: 3,
       x: 17,
       y: 17,
-      requiredEnergy: 10,
-      currentEnergy: 10,
+      requiredEnergy: 3,
+      currentEnergy: 3,
       currentHealth: 10
     }
   ]
