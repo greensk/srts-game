@@ -1,6 +1,11 @@
 <template>
   <div class="start-layout">
-    <img src="/static/rules.png">
+    <div class="logo-line">
+      <img src="/static/logo.png">
+    </div>
+    <div class="logo-line">
+      <img src="/static/rules.png">
+    </div>
     <div class="content">
       <slot></slot>
     </div>
