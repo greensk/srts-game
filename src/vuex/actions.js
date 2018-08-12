@@ -52,10 +52,11 @@ export default {
   unitsTimeoutUpdate ({ commit, state, dispatch }) {
     let values = {}
     state.units.forEach((unit) => {
+      values[unit.id] = {
+        currentHealth: unit.currentHealth + state.healthTimeoutDelta
+      }
       if (unit.currentEnergy < unit.requiredEnergy) {
-        values[unit.id] = {
-          currentEnergy: unit.currentEnergy + state.energyTimeoutDelta
-        }
+        values[unit.id].currentEnergy = unit.currentEnergy + state.energyTimeoutDelta
       }
     })
     // commit(UNITS_TIMEOUT_UPDATE, values)
