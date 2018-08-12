@@ -12,7 +12,8 @@ export default function () {
       y: 2, // начальная позиция, координата Y
       requiredEnergy: 2, // энергия, нужная для прыжка
       currentEnergy: 2, // начальная энергия
-      currentHealth: 10 // начальное здоровье
+      currentHealth: 10, // начальное здоровье
+      maxHealth: 50
     },
     // кролик "Толик"
     {
@@ -23,7 +24,8 @@ export default function () {
       y: 17,
       requiredEnergy: 2,
       currentEnergy: 2,
-      currentHealth: 10
+      currentHealth: 10,
+      maxHealth: 50
     }
   ]
   return {

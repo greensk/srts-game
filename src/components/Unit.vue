@@ -5,17 +5,14 @@
     :style="extraStyle"
     @click="onClick"
   >
-    <!--
     <div
-      class="energy-idicator"
+      class="health-idicator"
     >
       <div
-        v-if="currentEnergy > 0"
-        class="energy-indicator-value"
-        :style="energyIndicatorValueStyle"
+        class="health-indicator-value"
+        :style="healthIndicatorValueStyle"
       ></div>
     </div>
-    -->
     <img :src="unitImageUrl">
   </div>
 </template>
@@ -32,6 +29,9 @@ export default {
     status: String,
     currentEnergy: Number,
     requiredEnergy: Number,
+    currentHealth: Number,
+    requiredHealth: Number,
+    maxHealth: Number,
     x: Number,
     y: Number,
     player: Number
@@ -53,14 +53,14 @@ export default {
         opacity: this.currentEnergy < this.requiredEnergy ? 0.4 : 1
       }
     },
-    energyIndicatorValueStyle () {
-      return {
-        'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
-      }
-    },
     healthIndicatorValueStyle () {
+      let current = this.currentHealth
+      if (current > this.maxHealth) {
+        current = this.maxHealth
+      }
       return {
-        'width': Math.floor(fieldWidth * (this.currentEnergy - 1) / (this.requiredEnergy - 1)) + 'px'
+        'width': Math.floor(fieldWidth * (current - 1) / (this.maxHealth - 1)) + 'px',
+        'background-color': this.currentHealth > this.maxHealth ? 'red' : 'blue'
       }
     },
     unitImageUrl () {
@@ -85,7 +85,7 @@ export default {
   img
     margin: 5px
 
-  .energy-idicator
+  .health-idicator
     position: absolute
     top: 0px
     left: 0px
@@ -93,7 +93,7 @@ export default {
     height: 3px
     background-color: gray
 
-  .energy-indicator-value
+  .health-indicator-value
     position: absolute
     top: 0px
     left: 0px

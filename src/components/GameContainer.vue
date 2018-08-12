@@ -19,6 +19,9 @@
       :player="unit.player"
       :current-energy="unit.currentEnergy"
       :required-energy="unit.requiredEnergy"
+      :current-health="unit.currentHealth"
+      :required-health="unit.requiredHealth"
+      :max-health="unit.maxHealth"
       @select="selectUnit({ unit: unit, priv: true })"
     ></unit>
     <base-timer
