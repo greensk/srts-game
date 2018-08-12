@@ -64,7 +64,11 @@ export default {
       }
     },
     unitImageUrl () {
-      return `/static/unit${this.player}.png`
+      if (this.currentHealth < 0) {
+        return `/static/grave.png`
+      } else {
+        return `/static/unit${this.player}.png`
+      }
     }
   },
 
