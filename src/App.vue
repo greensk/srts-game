@@ -45,5 +45,5 @@ export default {
   color: #2c3e50
 
 body
-  background-color: #bfbfbf
+  background-color: #bfbfbf !important
 </style>
