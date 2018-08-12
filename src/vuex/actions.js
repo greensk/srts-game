@@ -98,7 +98,7 @@ export default {
     if (player) {
       commit(SET_CURRENY_PLAYER, +player)
     } else {
-      dispatch('generateMap', {})
+      dispatch('generateMap', { priv: true })
     }
     commit(SET_STATUS, 'play')
   },
@@ -223,9 +223,6 @@ export default {
     }))
   },
   generateMap ({ commit, state, dispatch }, { external }) {
-    if (state.currentPlayer !== 0) {
-      return
-    }
     let fields = []
     for (let x = 0; x < state.mapWidth; x++) {
       for (let y = 0; y < state.mapHeight; y++) {
