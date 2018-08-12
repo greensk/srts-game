@@ -19,7 +19,7 @@ export default {
   },
   goToField ({ commit, state }, { unitId, field }) {
     const unit = state.units.find(u => u.id === unitId)
-    if (unit.currentEnergy < unit.requiredEnergy) {
+    if (unit.player === state.currentPlayer && unit.currentEnergy < unit.requiredEnergy) {
       return
     }
     let currentHealth = unit.currentHealth
