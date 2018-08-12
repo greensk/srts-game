@@ -5,6 +5,7 @@
     <div
       v-for="request in gameRequests"
       :key="request.id"
+      class="request-item"
       @click="$emit('start-game', request.id)"
     >
       {{ request.name }}
@@ -38,4 +39,7 @@ export default {
 
 <style lang="sass" scoped>
 .start-game-created
+
+.request-item
+  cursor: pointer
 </style>
