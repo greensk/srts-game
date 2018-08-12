@@ -26,6 +26,10 @@ export default {
     let currentHealth = unit.currentHealth
     if (field.type === unit.player) {
       currentHealth += state.healthValidFoodDelta
+    } else if (field.type === 2) {
+      currentHealth += state.healthGrassFoodDelta
+    } else if (field.type === 3) {
+      currentHealth += state.healthCactusFoodDelta
     } else if (field.type > -1) {
       currentHealth += state.healthInvalidFoodDelta
     }

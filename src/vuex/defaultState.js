@@ -42,6 +42,8 @@ export default function () {
     healthTimeoutDelta: -0.1, // на сколько увеличивается здоровье за 1с
     healthValidFoodDelta: 4, // на сколько увеличивается здоровье при поедании своей еды
     healthInvalidFoodDelta: -4, // на сколько увеличивается здоровье при поедании не своей еды
+    healthGrassFoodDelta: -1, // на сколько увеличивается здоровье при поедании сорника
+    healthCactusFoodDelta: -10, // на сколько увеличивается здоровье при поедании кактуса
 
     mapWidth,
     mapHeight,
