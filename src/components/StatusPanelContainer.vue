@@ -4,6 +4,7 @@
     :my-health="myUnit.currentHealth"
     :enemy-energy="enemyUnit.currentEnergy"
     :enemy-health="enemyUnit.currentHealth"
+    :max-health="myUnit.maxHealth"
   ></status-panel>
 </template>
 

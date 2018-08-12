@@ -61,7 +61,7 @@ export default {
       }
       return {
         'width': Math.floor(fieldWidth * (current - 1) / (this.maxHealth - 1)) + 'px',
-        'background-color': this.currentHealth > this.maxHealth ? 'red' : 'blue'
+        'background-color': this.currentHealth > this.maxHealth ? 'green' : 'blue'
       }
     },
     unitImageUrl () {

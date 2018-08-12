@@ -127,7 +127,7 @@ export default {
   justify-content: center
   align-items: center
   min-width: 100vw
-  min-height: 100vh
+  min-height: calc(100vh-80px)
 .game-container
   display: block
   position: relative
