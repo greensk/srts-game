@@ -1,5 +1,6 @@
 <template>
   <div class="start-layout">
+    <img src="/static/rules.png">
     <div class="content">
       <slot></slot>
     </div>
