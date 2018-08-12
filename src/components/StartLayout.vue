@@ -4,7 +4,15 @@
       <img src="/static/logo.png">
     </div>
     <div class="logo-line">
-      <img src="/static/rules.png">
+      <div class="rules">
+        <p>Ешь полезные растения, получая баллы (рост здоровья +5).</p>
+        <p>
+          <img class="example" src="/static/example0.png">
+          <img class="example" src="/static/example1.png">
+        </p>
+        <p>Ешь растения противника, лишая его корма (затраты здоровья -5).</p>
+        <p>Вырывай сорняки, чтобы освободить место для своих растений (затраты здоровья -1 или -10 ).</p>
+      </div>
     </div>
     <div class="content">
       <slot></slot>
@@ -44,4 +52,10 @@ export default {
     display: block
     border-radius: 6px
     padding: 24px 16px
+
+.rules
+  margin: 35px 0px
+
+.example
+  margin: 0px 20px
 </style>
