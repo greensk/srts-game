@@ -48,8 +48,8 @@ export default function () {
     growProbability: { // вероятность роста
       grass: 0.006,
       cactus: 0.0005,
-      banana: 0.004,
-      carrot: 0.004
+      banana: 0.005,
+      carrot: 0.005
     },
 
     mutation: true, // клетка, окруженная растениями превращается в траву(кроме кактусов)
