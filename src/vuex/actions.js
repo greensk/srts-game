@@ -115,39 +115,98 @@ export default {
     if (state.currentPlayer !== 0) {
       return
     }
-    const getNearFields = (x, y) => {
-      let result = []
-      for (var dx = -1; dx <= 1; dx++) {
-        for (var dy = -1; dy <= 1; dy++) {
-          if ((dx !== 0 || dy !== 0) && (dx === 0 || dy === 0)) {
-            const field = state.fields.find(f => f.x === x + dx && f.y === y + dy)
-            if (field) {
-              result.push(field)
-            }
-          }
+
+    const normalizeMap = (fields) => {
+      let result = _.map(Array(state.mapWidth * state.mapHeight), (val, index) => {
+        const x = index % state.mapWidth
+        const y = Math.floor(index / state.mapWidth)
+
+        return {
+          x,
+          y,
+          type: -1,
+          id: `${x}:${y}`
         }
-      }
+      })
+
+      _.forEach(fields, ({x, y, type}) => {
+        result[x + y * state.mapWidth].type = type
+      })
+
       return result
     }
-    dispatch(
-      'setFields',
-      {
-        fields: state.fields.map(
-          (field) => {
-            if (field.type === 2) {
-              return null
-            }
-            const near = getNearFields(field.x, field.y)
-            const nearType = _.sample(near.filter(f => f.type > -1).map(f => f.type))
-            if (nearType > -1 && Math.random() < 0.03) {
-              return {...field, type: nearType}
-            } else {
-              return null
-            }
+
+    const fields = normalizeMap(state.fields)
+
+    const index = (x, y) => (x < 0 || y < 0 || x >= state.mapWidth || y >= state.mapHeight) ? -1 : x + y * state.mapWidth
+    const type = (x, y) => index(x, y) >= 0 ? fields[index(x, y)].type : -1
+
+    let bananas = _.filter(fields, ({type}) => type === 0).length
+    let carrots = _.filter(fields, ({type}) => type === 1).length
+
+    const newFields = normalizeMap(state.fields)
+
+    for (let x = 0, y = 0; y < state.mapHeight; x < state.mapWidth - 1 ? x++ : (++y && (x = 0))) {
+      const ind = index(x, y)
+      const neighbours = [type(x - 1, y), type(x + 1, y), type(x, y - 1), type(x, y + 1)]
+      let current = type(x, y)
+
+      const prob = Math.random()
+      const bananaProb = neighbours.filter((n) => n === 0).length * state.growProbability.banana
+      const carrotProb = neighbours.filter((n) => n === 1).length * state.growProbability.carrot
+      const grassProb = neighbours.filter((n) => n === 2).length * state.growProbability.grass
+      const cactusProb = neighbours.filter((n) => n === 3).length * state.growProbability.cactus
+
+      if (current === -1) {
+        let growBanana = (bananaProb > prob) && (bananas <= carrots || !state.simGrow)
+        let growCarrot = (carrotProb > prob) && (bananas >= carrots || !state.simGrow)
+
+        if (growBanana && growCarrot) {
+          if (Math.random() < 0.5) {
+            growBanana = false
+          } else {
+            growCarrot = false
           }
-        ).filter(f => f !== null)
+        }
+
+        if (growBanana) {
+          current = newFields[ind].type = 0
+        }
+
+        if (growCarrot) {
+          current = newFields[ind].type = 1
+        }
       }
-    )
+
+      const allNeightbours = (x > 0) + (x < state.mapWidth - 1) + (y > 0) +  (y < state.mapHeight - 1)
+      const growGrass = (grassProb > prob) || (state.mutation && neighbours.filter((n) => n >= 0).length >= allNeightbours)
+
+      if (growGrass && current !== 3) {
+        current = newFields[ind].type = 2
+      }
+
+      if (cactusProb > prob) {
+        current = newFields[ind].type = 3
+      }
+
+      if (type(x, y) === -1 && current === 0) {
+        bananas++
+      }
+
+      if (type(x, y) === -1 && current === 1) {
+        carrots++
+      }
+
+      if (type(x, y) === 0 && current !== 0) {
+        bananas--
+      }
+
+      if (type(x, y) === 1 && current !== 1) {
+        carrots--
+      }
+    }
+
+    dispatch('setFields', {fields: newFields})
   },
   setFields ({ commit, state }, { fields }) {
     if (state.fields.length === 0) {

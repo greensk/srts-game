@@ -45,6 +45,16 @@ export default function () {
     healthGrassFoodDelta: -1, // на сколько увеличивается здоровье при поедании сорника
     healthCactusFoodDelta: -10, // на сколько увеличивается здоровье при поедании кактуса
 
+    growProbability: { // вероятность роста
+      grass: 0.008,
+      cactus: 0.0005,
+      banana: 0.004,
+      carrot: 0.004
+    },
+
+    mutation: true, // клетка, окруженная растениями превращается в траву(кроме кактусов)
+    simGrow: false, // морковь и бананы растут параллельно
+
     mapWidth,
     mapHeight,
     fields,

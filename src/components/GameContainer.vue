@@ -115,9 +115,7 @@ export default {
     },
     onTimer () {
       this.unitsTimeoutUpdate({ priv: true })
-      if (Math.random() < 0.4) {
-        this.regeneration({ priv: true })
-      }
+      this.regeneration({ priv: true })
     }
   }
 }
