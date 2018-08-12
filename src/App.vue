@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>
+    <div class="app-wrapper">
       <div v-if="status === 'connection'">Соединение с сервером</div>
       <div v-if="status === 'connectionError'">Ошибка соединения с сервером</div>
       <status-panel-container v-if="status === 'play'"></status-panel-container>
@@ -43,7 +43,6 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  margin-top: 60px
 
 body
   background-color: #D2D2D2

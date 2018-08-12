@@ -90,24 +90,28 @@ export default {
     commit(SET_GAME_REQUESTS, list)
   },
   startGame ({ commit, dispatch }, { clientId, player, gameId }) {
+    console.log('START GAME')
     // magic action, server should start game with specified client
     if (gameId) {
       commit(SET_GAME_ID, gameId)
     }
-    commit(SET_STATUS, 'play')
     if (player) {
       commit(SET_CURRENY_PLAYER, +player)
+    } else {
+      dispatch('generateMap', {})
     }
-    dispatch('generateMap', {})
+    commit(SET_STATUS, 'play')
   },
   setGameId ({ commit }, { gameId }) {
     commit(SET_GAME_ID, gameId)
   },
   resumeGame ({ commit, state }, { gameId, player }) {
+    console.log('RESUME GAME')
     // magic action to provide to the restarted server current game id and player
     commit(SET_STATUS, 'play')
   },
   regeneration ({ commit, state, dispatch }, params = {}) {
+    console.log('REGENERATION')
     if (state.currentPlayer !== 0) {
       return
     }
