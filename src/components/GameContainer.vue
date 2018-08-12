@@ -108,9 +108,9 @@ export default {
       }
     },
     onTimer () {
-      this.unitsTimeoutUpdate()
+      this.unitsTimeoutUpdate({ priv: true })
       if (Math.random() < 0.4) {
-        this.regeneration()
+        this.regeneration({ priv: true })
       }
     }
   }

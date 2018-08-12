@@ -49,9 +49,12 @@ export default {
     })
     commit(SET_FIELDS, newFields)
   },
-  unitsTimeoutUpdate ({ commit, state, dispatch }) {
+  unitsTimeoutUpdate ({ commit, state, dispatch }, params) {
     let values = {}
     state.units.forEach((unit) => {
+      if (unit.currentHealth < 0) {
+        return
+      }
       values[unit.id] = {
         currentHealth: unit.currentHealth + state.healthTimeoutDelta
       }
