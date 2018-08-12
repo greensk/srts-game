@@ -46,7 +46,7 @@ export default function () {
     healthCactusFoodDelta: -10, // на сколько увеличивается здоровье при поедании кактуса
 
     growProbability: { // вероятность роста
-      grass: 0.008,
+      grass: 0.006,
       cactus: 0.0005,
       banana: 0.004,
       carrot: 0.004
