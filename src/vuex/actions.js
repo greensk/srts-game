@@ -1,7 +1,7 @@
 import {
   SELECT_UNIT,
   UPDATE_UNIT,
-  UNITS_TIMEOUT_UPDATE,
+  // UNITS_TIMEOUT_UPDATE,
   SET_PLAYER_NAME,
   SET_OWN_GAME,
   SET_GAMES,
@@ -10,7 +10,8 @@ import {
   SET_STATUS,
   SET_CURRENY_PLAYER,
   SET_GAME_ID,
-  SET_FIELDS
+  SET_FIELDS,
+  UNITS_UPDATE
 } from './mutationTypes.js'
 import _ from 'lodash'
 export default {
@@ -19,7 +20,7 @@ export default {
   },
   goToField ({ commit, state }, { unitId, field }) {
     const unit = state.units.find(u => u.id === unitId)
-    if (unit.player === state.currentPlayer && unit.currentEnergy < unit.requiredEnergy) {
+    if (unit.currentEnergy < unit.requiredEnergy) {
       return
     }
     let currentHealth = unit.currentHealth
@@ -44,8 +45,20 @@ export default {
     })
     commit(SET_FIELDS, newFields)
   },
-  unitsTimeoutUpdate ({ commit }) {
-    commit(UNITS_TIMEOUT_UPDATE)
+  unitsTimeoutUpdate ({ commit, state, dispatch }) {
+    let values = {}
+    state.units.forEach((unit) => {
+      if (unit.currentEnergy < unit.requiredEnergy) {
+        values[unit.id] = {
+          currentEnergy: unit.currentEnergy + state.energyTimeoutDelta
+        }
+      }
+    })
+    // commit(UNITS_TIMEOUT_UPDATE, values)
+    dispatch('unitsUpdate', { values })
+  },
+  unitsUpdate ({ commit }, { values }) {
+    commit(UNITS_UPDATE, values)
   },
   setPlayerName ({ commit }, { name }) {
     // magic action, server should update player name at the list

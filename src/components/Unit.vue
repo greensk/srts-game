@@ -5,6 +5,7 @@
     :style="extraStyle"
     @click="onClick"
   >
+    <!--
     <div
       class="energy-idicator"
     >
@@ -14,6 +15,7 @@
         :style="energyIndicatorValueStyle"
       ></div>
     </div>
+    -->
     <img :src="unitImageUrl">
   </div>
 </template>
@@ -47,7 +49,8 @@ export default {
     extraStyle () {
       return {
         top: (this.y * fieldWidth).toString() + 'px',
-        left: (this.x * fieldHeight).toString() + 'px'
+        left: (this.x * fieldHeight).toString() + 'px',
+        opacity: this.currentEnergy < this.requiredEnergy ? 0.4 : 1
       }
     },
     energyIndicatorValueStyle () {
@@ -99,7 +102,7 @@ export default {
     transition: width 1s linear
 
   &.selected.is-movable
-    animation: blinker .4s cubic-bezier(.5, 0, 1, 1) infinite alternate
+    // animation: blinker .4s cubic-bezier(.5, 0, 1, 1) infinite alternate
 
   &.waiting
     opacity: 0.7

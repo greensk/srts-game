@@ -10,7 +10,8 @@ import {
   SET_STATUS,
   SET_CURRENY_PLAYER,
   SET_GAME_ID,
-  SET_FIELDS
+  SET_FIELDS,
+  UNITS_UPDATE
 } from './mutationTypes.js'
 export default {
   [SELECT_UNIT] (state, unitId) {
@@ -29,6 +30,7 @@ export default {
     })
   },
   [UNITS_TIMEOUT_UPDATE] (state) {
+    // DEPRICATED
     state.units = state.units.map((unit) => {
       let currentEnergy = unit.currentEnergy
       if (currentEnergy < unit.requiredEnergy) {
@@ -67,5 +69,14 @@ export default {
   },
   [SET_GAME_ID] (state, gameId) {
     state.gameId = gameId
+  },
+  [UNITS_UPDATE] (state, values) {
+    state.units = state.units.map((unit) => {
+      if (values[unit.id] !== undefined) {
+        return {...unit, ...values[unit.id]}
+      } else {
+        return unit
+      }
+    })
   }
 }

@@ -22,13 +22,16 @@
       @select="selectUnit({ unit: unit, priv: true })"
     ></unit>
     <base-timer
-      :timeout="1000"
-      @timer="unitsTimeoutUpdate"
+      v-if="currentPlayer === 0"
+      :timeout="800"
+      @timer="onTimer"
     ></base-timer>
+    <!--
     <base-timer
       :timeout="7000"
       @timer="regeneration"
     ></base-timer>
+    -->
   </div>
 </template>
 
@@ -99,6 +102,12 @@ export default {
         return 'selectable'
       } else {
         return 'waiting'
+      }
+    },
+    onTimer () {
+      this.unitsTimeoutUpdate()
+      if (Math.random() < 0.4) {
+        this.regeneration()
       }
     }
   }

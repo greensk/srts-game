@@ -10,8 +10,8 @@ export default function () {
       speed: 3, // расстояние за один прыжок
       x: 2, // начальная позиция, координата X
       y: 2, // начальная позиция, координата Y
-      requiredEnergy: 3, // энергия, нужная для прыжка
-      currentEnergy: 3, // начальная энергия
+      requiredEnergy: 2, // энергия, нужная для прыжка
+      currentEnergy: 2, // начальная энергия
       currentHealth: 10 // начальное здоровье
     },
     // кролик "Толик"
@@ -21,8 +21,8 @@ export default function () {
       speed: 3,
       x: 17,
       y: 17,
-      requiredEnergy: 3,
-      currentEnergy: 3,
+      requiredEnergy: 2,
+      currentEnergy: 2,
       currentHealth: 10
     }
   ]
