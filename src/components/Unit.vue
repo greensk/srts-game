@@ -6,6 +6,7 @@
     @click="onClick"
   >
     <div
+      v-if="currentHealth > 0"
       class="health-idicator"
     >
       <div
@@ -50,7 +51,7 @@ export default {
       return {
         top: (this.y * fieldWidth).toString() + 'px',
         left: (this.x * fieldHeight).toString() + 'px',
-        opacity: this.currentEnergy < this.requiredEnergy ? 0.4 : 1
+        opacity: this.currentHealth > 0 && this.currentEnergy < this.requiredEnergy ? 0.4 : 1
       }
     },
     healthIndicatorValueStyle () {
