@@ -178,7 +178,7 @@ export default {
         }
       }
 
-      const allNeightbours = (x > 0) + (x < state.mapWidth - 1) + (y > 0) +  (y < state.mapHeight - 1)
+      const allNeightbours = (x > 0) + (x < state.mapWidth - 1) + (y > 0) + (y < state.mapHeight - 1)
       const growGrass = (grassProb > prob) || (state.mutation && neighbours.filter((n) => n >= 0).length >= allNeightbours)
 
       if (growGrass && current !== 3) {
