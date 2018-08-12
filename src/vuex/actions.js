@@ -163,8 +163,10 @@ export default {
           var type = 0
         } else if (rand < 0.04) {
           type = 1
-        } else if (rand < 0.1) {
+        } else if (rand < 0.2) {
           type = 2
+        } else if (rand < 0.21) {
+          type = 3
         } else {
           type = -1
         }

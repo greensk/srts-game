@@ -105,4 +105,16 @@ export default {
     background-image: url(/static/field2.png)
     margin-top: 5px
     margin-left: 5px
+
+  &.type-3:after
+    position: absolute
+    content: ''
+    left: 0px
+    top: 0px
+    height: 40px
+    width: 40px
+    background-repeat: no-repeat
+    background-image: url(/static/field3.png)
+    margin-top: 5px
+    margin-left: 5px
 </style>
