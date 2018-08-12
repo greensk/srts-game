@@ -86,6 +86,7 @@ export default {
 <style lang="sass" scoped>
 .unit
   position: absolute
+  transition: top .5s, left .5s
 
   img
     margin: 5px
