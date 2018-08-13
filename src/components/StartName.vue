@@ -1,11 +1,11 @@
 <template>
   <div class="start-name">
     <q-input
-      float-label="Укажите имя игрока"
+      :float-label="$t('start.enter-name')"
       v-model="playerName"
     />
     <q-btn
-      label="Далее"
+      :label="$t('start.next')"
       @click="$emit('set-name', {name: playerName})"
     />
   </div>

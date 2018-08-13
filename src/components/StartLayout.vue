@@ -5,13 +5,13 @@
     </div>
     <div class="logo-line">
       <div class="rules">
-        <p>Ешь полезные растения, получая баллы (рост здоровья +5).</p>
+        <p>{{ $t('rules.1') }}</p>
         <p>
           <img class="example" src="/static/example0.png">
           <img class="example" src="/static/example1.png">
         </p>
-        <p>Ешь растения противника, лишая его корма (затраты здоровья -5).</p>
-        <p>Вырывай сорняки, чтобы освободить место для своих растений (затраты здоровья -1 или -10 ).</p>
+        <p>{{ $t('rules.2') }}</p>
+        <p>{{ $t('rules.3') }}</p>
       </div>
     </div>
     <div class="content">

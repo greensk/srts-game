@@ -1,7 +1,7 @@
 <template>
   <div class="start-game-created">
-    <div v-if="gameRequests.length > 0">Щелкните на имя игрока, чтобы начать</div>
-    <div v-else>Ожидание подключений</div>
+    <div v-if="gameRequests.length > 0">{{ $t('start.select-player') }}</div>
+    <div v-else>{{ $t('start.waiting-clients') }}</div>
     <div
       v-for="request in gameRequests"
       :key="request.id"

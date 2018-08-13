@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <div v-if="status === 'connection'">Соединение с сервером</div>
-      <div v-if="status === 'connectionError'">Ошибка соединения с сервером</div>
+      <div v-if="status === 'connection'">{{ $t('start.waiting') }}</div>
+      <div v-if="status === 'connectionError'">{{ $t('start.connection-error') }}</div>
       <status-panel-container v-if="status === 'play'"></status-panel-container>
       <start-container v-if="status === 'wait'"></start-container>
       <game-container v-if="status === 'play'"></game-container>

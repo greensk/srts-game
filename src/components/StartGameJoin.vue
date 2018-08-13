@@ -3,7 +3,7 @@
     v-if="games"
     class="start-game-join"
   >
-    <div v-if="games.length > 0">Или выберите чужую игру для подключения</div>
+    <div v-if="games.length > 0">{{ $t('start.select') }}</div>
     <div
       v-for="game in games"
       :key="game.id"
